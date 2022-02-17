@@ -1,8 +1,6 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Rig_O_Meter.Properties" GeneratedClassName="Settings">
+  <Profiles />
   <Settings>
     <Setting Name="Dist_Upper_A" Type="System.Single" Scope="User">
       <Value Profile="(Default)">1137</Value>
@@ -29,7 +27,7 @@
       <Value Profile="(Default)">1000</Value>
     </Setting>
     <Setting Name="Offset_CoR" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">300</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

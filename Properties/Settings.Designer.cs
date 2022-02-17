@@ -121,7 +121,7 @@ namespace Rig_O_Meter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("300")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public float Offset_CoR {
             get {
                 return ((float)(this["Offset_CoR"]));

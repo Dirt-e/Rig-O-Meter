@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Deployment.Application;
 using System.IO;
 using System.Linq;
@@ -20,14 +21,23 @@ namespace Rig_O_Meter
     public partial class MainWindow : Window
     {
         PhantomRig pr = new PhantomRig();
+        BackgroundWorker bw = new BackgroundWorker();
 
         public MainWindow()
         {
             InitializeComponent();
-
             SetDataContexts();
 
             Title = "Rig-O-Meter " + getRunningVersion().ToString();
+
+            bw.DoWork += (object sender, DoWorkEventArgs e) =>
+            {
+                DoEnvelopeCalculations();
+            };
+            bw.RunWorkerCompleted += (object sender, RunWorkerCompletedEventArgs e) =>
+            {
+                EndWork();
+            };
         }
 
         private void SetDataContexts()
@@ -35,7 +45,7 @@ namespace Rig_O_Meter
             border_UpperPlatform.DataContext = pr.integrator;
             border_LowerPlatform.DataContext = pr.integrator;
             border_Actuators.DataContext = pr.actuatorsystem;
-            border_Park_Position.DataContext = pr.integrator;
+            //border_Park_Position.DataContext = pr.integrator;
             border_PausePosition.DataContext = pr.integrator;
             border_CenterOfRotation.DataContext = pr.integrator;
 
@@ -95,6 +105,21 @@ namespace Rig_O_Meter
 
         private void CalculateEnvelope_Click(object sender, RoutedEventArgs e)
         {
+            if (!bw.IsBusy)
+            {
+                StartWork();
+            }
+        }
+
+        void StartWork()
+        {
+            btn_calculate.Foreground = Brushes.LightCoral;
+            btn_calculate.Content = "Busy...";
+            btn_calculate.IsEnabled = false;
+            bw.RunWorkerAsync();
+        }
+        void DoEnvelopeCalculations()
+        {
             List<Point> Heave_Surge = pr.Explore(DOF.heave, DOF.surge);
             List<Point> Heave_Sway = pr.Explore(DOF.heave, DOF.sway);
             List<Point> Surge_Sway = pr.Explore(DOF.surge, DOF.sway);
@@ -104,6 +129,13 @@ namespace Rig_O_Meter
             PrintList(Heave_Sway, nameof(Heave_Sway));
             PrintList(Surge_Sway, nameof(Surge_Sway));
             PrintList(Pitch_Roll, nameof(Pitch_Roll));
+        }
+        void EndWork()
+        {
+            Color color = (Color)ColorConverter.ConvertFromString("#FF000000");
+            btn_calculate.Foreground = new SolidColorBrush(color);
+            btn_calculate.Content = "Calculate Envelope";
+            btn_calculate.IsEnabled = true;
         }
 
         void PrintList(List<Point> list, string name)
