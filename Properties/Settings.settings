@@ -1,0 +1,35 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings>
+    <Setting Name="Dist_Upper_A" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1137</Value>
+    </Setting>
+    <Setting Name="Dist_Upper_B" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">178</Value>
+    </Setting>
+    <Setting Name="Dist_Lower_A" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">110</Value>
+    </Setting>
+    <Setting Name="Dist_Lower_B" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1391</Value>
+    </Setting>
+    <Setting Name="Stroke" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">520</Value>
+    </Setting>
+    <Setting Name="Min_Length" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">970</Value>
+    </Setting>
+    <Setting Name="Offset_Park" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">700</Value>
+    </Setting>
+    <Setting Name="Offset_Pause" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="Offset_CoR" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,195 @@
+﻿<Window x:Class="Rig_O_Meter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rig_O_Meter"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded" Closing="Window_Closing"
+    Title="Rig-O-Meter" Height="350" Width="360" 
+    Style="{StaticResource ChildWindow_Style}" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Enter Rig Geometry:" FontSize="15" FontWeight="Bold"
+                   Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"/>
+        <Border x:Name="border_UpperPlatform" Grid.Row="1" Style="{StaticResource BorderStyle}" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="Upper Platform" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
+                            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+                <TextBlock  Text="Distance A" FontWeight="DemiBold" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBlock  Text="Distance B" FontWeight="DemiBold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBox    Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
+                            Text="{Binding Dist_A_Upper, UpdateSourceTrigger=LostFocus}"/>
+                <TextBox    Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
+                            Text="{Binding Dist_B_Upper, UpdateSourceTrigger=LostFocus}"/>
+                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="2,0,0,0"/>
+            </Grid>
+        </Border>
+        <Border x:Name="border_LowerPlatform" Grid.Row="3" Style="{StaticResource BorderStyle}" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="Lower Platform" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+                <TextBlock  Text="Distance A" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBlock  Text="Distance B" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBox    Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
+                            Text="{Binding Dist_A_Lower, UpdateSourceTrigger=LostFocus}"/>
+                <TextBox    Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
+                            Text="{Binding Dist_B_Lower, UpdateSourceTrigger=LostFocus}"/>
+                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="2,0,0,0"/>
+            </Grid>
+        </Border>
+        <Border x:Name="border_Actuators" Grid.Row="5" Style="{StaticResource BorderStyle}" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="Actuators" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
+                            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+                <TextBlock  Text="Stroke" FontWeight="DemiBold" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBox    Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
+                            Text="{Binding Stroke, UpdateSourceTrigger=LostFocus}"/>
+                <TextBlock  Text="Min Length" FontWeight="DemiBold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBox    Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
+                            Text="{Binding MinLength, UpdateSourceTrigger=LostFocus}"/>
+                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="2,0,0,0"/>
+            </Grid>
+        </Border>
+        <Border x:Name="border_Park_Position" Grid.Row="1" Style="{StaticResource BorderStyle}" Grid.Column="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="Park Position" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
+                            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+                <TextBlock  Text="Height" FontWeight="DemiBold" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+                <Button     Grid.Row="1" Grid.Column="2" Margin="4" Content="Calib." FontSize="9"
+                            Click="CalibPark_Click"/>
+                <TextBox    Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
+                            x:Name="txtbx_OffsetPark" Text="{Binding Offset_Park, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" Margin="2,0,0,0"/>
+            </Grid>
+        </Border>
+        <Border x:Name="border_PausePosition" Grid.Row="3" Style="{StaticResource BorderStyle}" Grid.Column="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
+                            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="Pause Position"/>
+                <TextBlock  Text="Height" FontWeight="DemiBold" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+                <Button     Grid.Row="1" Grid.Column="2" Margin="4" Content="Calib." FontSize="9"
+                            Click="CalibPause_Click"/>
+                <TextBox    Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
+                            x:Name="txtbx_OffsetPause" Text="{Binding Offset_Pause, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"/>
+                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" Margin="2,0,0,0"/>
+            </Grid>
+        </Border>
+        <Border x:Name="border_CenterOfRotation" Grid.Row="5" Style="{StaticResource BorderStyle}" Grid.Column="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock  Text="Center of Rotation" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
+                            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+                <TextBlock  Text="Offset" FontWeight="DemiBold" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBox    Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
+                            x:Name="txtbx_OffsetCoR" Text="{Binding Offset_CoR, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="2,0,0,0"/>
+            </Grid>
+        </Border>
+        <Button Content="Calculate Envelope" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" 
+                Margin="5,0,5,0"
+                Click="CalculateEnvelope_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>
