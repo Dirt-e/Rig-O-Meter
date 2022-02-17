@@ -20,7 +20,7 @@ namespace Rig_O_Meter
         int step_rotations = 5;         //degrees
         float stepsize_trans_min = 0.1f;
         float stepsize_rot_min = 0.1f;
-        int numberOfPointsOnList = 100;
+        int numberOfPointsOnList = 500;
 
         public bool IsInlimits { get { return actuatorsystem.AllInLimits; } }
 
