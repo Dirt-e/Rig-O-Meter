@@ -130,5 +130,17 @@ namespace Rig_O_Meter.Properties {
                 this["Offset_CoR"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public int NumberOfPoints {
+            get {
+                return ((int)(this["NumberOfPoints"]));
+            }
+            set {
+                this["NumberOfPoints"] = value;
+            }
+        }
     }
 }

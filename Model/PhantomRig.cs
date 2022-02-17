@@ -20,7 +20,7 @@ namespace Rig_O_Meter
         int step_rotations = 5;         //degrees
         float stepsize_trans_min = 0.1f;
         float stepsize_rot_min = 0.1f;
-        int numberOfPointsOnList = 500;
+        int numberOfPointsOnList = 7;
 
         public bool IsInlimits { get { return actuatorsystem.AllInLimits; } }
 
@@ -31,6 +31,7 @@ namespace Rig_O_Meter
             integrator = new Integrator();
             ik_module = new IK_Module(integrator);
             actuatorsystem = new ActuatorSystem(ik_module);
+            numberOfPointsOnList = Properties.Settings.Default.NumberOfPoints;
 
             //Settings:
             integrator.Plat_Motion.IsParentOf(integrator.UpperPoints);
@@ -38,6 +39,7 @@ namespace Rig_O_Meter
 
             calibrate();
         }
+
         void Update()
         {
             integrator.Update(dof_data);
@@ -176,7 +178,7 @@ namespace Rig_O_Meter
                 }
                 if (IsRotation(dof) && Math.Abs(dof_data.report(dof)) > 180)
                 {
-                    throw new Exception($"Rotation out of bounds! \n\nIt looks like your {dof} DOF does not find a limit. " +
+                    throw new Exception(    $"Rotation out of bounds! \n\nIt looks like your {dof} DOF does not find a limit. " +
                                             $"The reason for this could be, that the values defining your upper platform are unrealistically small. \n" +
                                             $"Also, please check that you have entered realistic values for 'stroke' and 'Minimim length'.");
                 }
@@ -316,7 +318,7 @@ namespace Rig_O_Meter
                 ZeroAll_DOFs();     //Start from the center of the envelope
 
                 List<Point> list = new List<Point>();
-
+                
                 while (list.Count < numberOfPointsOnList)
                 {
                     //Probe_x (+/-)

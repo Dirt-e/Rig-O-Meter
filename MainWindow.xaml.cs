@@ -141,6 +141,7 @@ namespace Rig_O_Meter
         void PrintList(List<Point> list, string name)
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine($";{name}");
 
             foreach (Point p in list)
             {
