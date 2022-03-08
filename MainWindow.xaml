@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:HelixToolkit="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"   
         xmlns:local="clr-namespace:Rig_O_Meter"
         mc:Ignorable="d"
         Loaded="Window_Loaded" Closing="Window_Closing"
-    Title="Rig-O-Meter" Height="350" Width="360" 
+    Title="Rig-O-Meter" Height="460" Width="800" 
     Style="{StaticResource ChildWindow_Style}" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
 
     <Grid Margin="0">
@@ -17,21 +18,94 @@
             <RowDefinition Height="70"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="70"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="120"/>
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="240"/>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Enter Rig Geometry:" FontSize="15" FontWeight="Bold"
-                   Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"/>
+        <HelixToolkit:HelixViewport3D   x:Name="Viewport"
+                                        Grid.Row="0" Grid.RowSpan="9" Grid.Column="0" Grid.ColumnSpan="6"
+                                        ZoomExtentsWhenLoaded="True"
+                                        
+                                        ShowCoordinateSystem="True" CoordinateSystemLabelForeground="Gray"
+                                        CoordinateSystemLabelX="Right" CoordinateSystemLabelY="Fwd" CoordinateSystemLabelZ="Up" 
+                                        
+                                        ShowViewCube="True" IsViewCubeEdgeClicksEnabled="true"  ViewCubeHeight="100" ViewCubeWidth="100"
+                                        ViewCubeBackText="L" ViewCubeLeftText="F" ViewCubeFrontText="R" ViewCubeRightText="B"
+                                        
+                                        CameraRotationMode="Turntable" ShowCameraInfo="false" ShowCameraTarget="True"
+                                        Background="{StaticResource MyDimGrayBrush}">
+            <HelixToolkit:SunLight/>
+            <HelixToolkit:GridLinesVisual3D x:Name="World" Width="2000" Length="2000" Thickness="2" MinorDistance="100" MajorDistance="500" Fill="LightGray">
+                <!--Lower Points-->
+                <HelixToolkit:SphereVisual3D Center="{Binding Lower1, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="GreenYellow"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Lower2, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="DimGray"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Lower3, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="DimGray"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Lower4, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="DimGray"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Lower5, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="DimGray"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Lower6, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="GreenYellow"/>
+                <!--Upper Points-->
+                <HelixToolkit:SphereVisual3D Center="{Binding Upper1, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="GreenYellow"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Upper2, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="DimGray"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Upper3, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="DimGray"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Upper4, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="DimGray"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Upper5, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="DimGray"/>
+                <HelixToolkit:SphereVisual3D Center="{Binding Upper6, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Radius="40" Fill="GreenYellow"/>
+                <!--Actuators-->
+                <HelixToolkit:PipeVisual3D x:Name="Act1" Diameter="50"
+                                           Point1="{    Binding Lower1,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{    Binding Upper1,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Fill="WhiteSmoke"/>
+                <HelixToolkit:PipeVisual3D x:Name="Act2" Diameter="50"
+                                           Point1="{    Binding Lower2,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{    Binding Upper2,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Fill="WhiteSmoke"/>
+                <HelixToolkit:PipeVisual3D x:Name="Act3" Diameter="50"
+                                           Point1="{    Binding Lower3,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{    Binding Upper3,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Fill="WhiteSmoke"/>
+                <HelixToolkit:PipeVisual3D x:Name="Act4" Diameter="50"
+                                           Point1="{    Binding Lower4,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{    Binding Upper4,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Fill="WhiteSmoke"/>
+                <HelixToolkit:PipeVisual3D x:Name="Act5" Diameter="50"
+                                           Point1="{    Binding Lower5,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{    Binding Upper5,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Fill="WhiteSmoke"/>
+                <HelixToolkit:PipeVisual3D x:Name="Act6" Diameter="50"
+                                           Point1="{    Binding Lower6,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{    Binding Upper6,     UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Fill="WhiteSmoke"/>
+                <!--Upper Frame-->
+                <HelixToolkit:PipeVisual3D Diameter="50" Fill="DimGray"
+                                           Point1="{Binding Upper1, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{Binding Upper2, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                <HelixToolkit:PipeVisual3D Diameter="50" Fill="DimGray"
+                                           Point1="{Binding Upper2, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{Binding Upper3, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                <HelixToolkit:PipeVisual3D Diameter="50" Fill="DimGray"
+                                           Point1="{Binding Upper3, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{Binding Upper4, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                <HelixToolkit:PipeVisual3D Diameter="50" Fill="DimGray"
+                                           Point1="{Binding Upper4, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{Binding Upper5, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                <HelixToolkit:PipeVisual3D Diameter="50" Fill="DimGray"
+                                           Point1="{Binding Upper5, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{Binding Upper6, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                <HelixToolkit:PipeVisual3D Diameter="50" Fill="DimGray"
+                                           Point1="{Binding Upper6, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                           Point2="{Binding Upper1, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+            </HelixToolkit:GridLinesVisual3D>
+        </HelixToolkit:HelixViewport3D>
+        
         <Border x:Name="border_UpperPlatform" Grid.Row="1" Style="{StaticResource BorderStyle}" Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -110,7 +184,7 @@
                 <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="2,0,0,0"/>
             </Grid>
         </Border>
-        <!--<Border x:Name="border_Park_Position" Grid.Row="1" Style="{StaticResource BorderStyle}" Grid.Column="4">
+        <Border x:Name="border_NumberOfPoints" Grid.Row="1" Style="{StaticResource BorderStyle}" Grid.Column="4">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"/>
@@ -125,16 +199,15 @@
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="25"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock  Text="Park Position" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
+                <TextBlock  Text="" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
                             Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-                <TextBlock  Text="Height" FontWeight="DemiBold" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
-                <Button     Grid.Row="1" Grid.Column="2" Margin="4" Content="Calib." FontSize="9"
-                            Click="CalibPark_Click"/>
+                <TextBlock  Text="Samples:" FontWeight="DemiBold" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"
+                            Grid.ColumnSpan="2"/>
                 <TextBox    Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Style="{StaticResource TextBox_Style}"
-                            x:Name="txtbx_OffsetPark" Text="{Binding Offset_Park, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
-                <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                            x:Name="txtbx_OffsetPark" Text="{Binding numberOfPointsOnList, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+                <TextBlock  Text="" FontWeight="DemiBold" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" Margin="2,0,0,0"/>
             </Grid>
-        </Border>-->
+        </Border>
         <Border x:Name="border_PausePosition" Grid.Row="3" Style="{StaticResource BorderStyle}" Grid.Column="4">
             <Grid>
                 <Grid.RowDefinitions>
@@ -182,8 +255,9 @@
                 <TextBlock  Text="mm" FontWeight="DemiBold" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="2,0,0,0"/>
             </Grid>
         </Border>
+        
         <Button Content="Calculate Envelope" x:Name="btn_calculate" 
-                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4"  Margin="5,0,5,0"
+                Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2"  Margin="5,0,5,0"
                 Click="CalculateEnvelope_Click">
             <Button.Resources>
                 <Style TargetType="Border">

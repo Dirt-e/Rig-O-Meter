@@ -61,7 +61,7 @@ namespace Rig_O_Meter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1391")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1600")]
         public float Dist_Lower_B {
             get {
                 return ((float)(this["Dist_Lower_B"]));
@@ -97,19 +97,7 @@ namespace Rig_O_Meter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("700")]
-        public float Offset_Park {
-            get {
-                return ((float)(this["Offset_Park"]));
-            }
-            set {
-                this["Offset_Park"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("987")]
         public float Offset_Pause {
             get {
                 return ((float)(this["Offset_Pause"]));

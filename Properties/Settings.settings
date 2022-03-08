@@ -12,7 +12,7 @@
       <Value Profile="(Default)">110</Value>
     </Setting>
     <Setting Name="Dist_Lower_B" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">1391</Value>
+      <Value Profile="(Default)">1600</Value>
     </Setting>
     <Setting Name="Stroke" Type="System.Single" Scope="User">
       <Value Profile="(Default)">520</Value>
@@ -20,11 +20,8 @@
     <Setting Name="Min_Length" Type="System.Single" Scope="User">
       <Value Profile="(Default)">970</Value>
     </Setting>
-    <Setting Name="Offset_Park" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">700</Value>
-    </Setting>
     <Setting Name="Offset_Pause" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">1000</Value>
+      <Value Profile="(Default)">987</Value>
     </Setting>
     <Setting Name="Offset_CoR" Type="System.Single" Scope="User">
       <Value Profile="(Default)">0</Value>
